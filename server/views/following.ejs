@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Following</title>
+</head>
+<body>
+  <h1>Following</h1>
+  <ul>
+    <% following.forEach(follow => { %>
+      <li>
+        <%= follow.following_id.username %>
+        <form method="POST" action="/api/unfollow" style="display: inline;">
+          <input type="hidden" name="follower_id" value="<%= follow.follower_id %>">
+          <input type="hidden" name="following_id" value="<%= follow.following_id %>">
+          <button type="submit">Unfollow</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <form method="POST" action="/api/follow">
+    <input type="hidden" name="follower_id" value="<%= user_id %>">
+    <input type="text" name="following_id" placeholder="User ID to follow">
+    <button type="submit">Follow</button>
+  </form>
+  <a href="/followers/<%= user_id %>">View Followers</a>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Followers</title>
+</head>
+<body>
+  <h1>Followers</h1>
+  <ul>
+    <% followers.forEach(follower => { %>
+      <li><%= follower.follower_id.username %></li>
+    <% }) %>
+  </ul>
+  <a href="/following/<%= user_id %>">Back to Following</a>
+</body>
+</html>
